@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "Seeing Through the Noise: SVD Denoising of MNIST Digit 3"
+message: "If you use or reference this project, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: "Saldana Nunez"
+    given-names: "Alfredo"
+version: 1.0.0
+date-released: 2026-09-18
+license: MIT
+keywords:
+  - singular value decomposition
+  - SVD
+  - MNIST
+  - image denoising
+  - low-rank approximation
+  - PSNR
+  - data science
