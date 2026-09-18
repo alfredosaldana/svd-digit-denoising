@@ -110,8 +110,8 @@ svd-digit-denoising/
 │   ├── optimal_k.png
 │   └── goldilocks.png
 └── presentation/
-    ├── SVD_Digit3_Denoising_10_slides_corregido.pptx
-    └── SVD_Digit3_Denoising_10_slides_corregido.pdf
+    ├── SVD_Digit3_Denoising_10_slides_v1.pptx
+    └── SVD_Digit3_Denoising_10_slides_v1.pdf
 ```
 
 ## Installation
