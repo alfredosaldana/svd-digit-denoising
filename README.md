@@ -158,6 +158,14 @@ The notebook uses the **MNIST** handwritten-digit dataset. It first attempts to 
 
 The repository does **not** store the full MNIST dataset. It is downloaded by the notebook when needed.
 
+## Dataset
+
+This project uses the MNIST Database of Handwritten Digits, originally
+developed by Yann LeCun, Corinna Cortes, and Christopher J. C. Burges.
+
+- Official MNIST source: https://yann.lecun.com/exdb/mnist/
+- UCI dataset record: https://doi.org/10.24432/C53K8Q
+
 ## Reproducibility Note
 
 The saved outputs shown in the notebook and presentation come from one completed run. Gaussian noise is generated randomly and the current notebook does not set a fixed random seed, so rerunning the notebook may produce slightly different singular values, PSNR measurements, and the exact best `k`.
