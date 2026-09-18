@@ -160,11 +160,25 @@ The repository does **not** store the full MNIST dataset. It is downloaded by th
 
 ## Dataset
 
-This project uses the MNIST Database of Handwritten Digits, originally
-developed by Yann LeCun, Corinna Cortes, and Christopher J. C. Burges.
+This project uses the MNIST Database of Handwritten Digits. MNIST contains
+70,000 grayscale images of handwritten digits, each with a resolution of
+28 × 28 pixels.
+
+For this project, only images labeled as the digit **3** were selected,
+resulting in **6,131 images** used for the SVD denoising experiment.
 
 - Official MNIST source: https://yann.lecun.com/exdb/mnist/
-- UCI dataset record: https://doi.org/10.24432/C53K8Q
+- Academic dataset record: https://doi.org/10.24432/C53K8Q
+
+## References
+
+LeCun, Y., Cortes, C., & Burges, C. J. C.  
+**MNIST Database of Handwritten Digits.**  
+https://yann.lecun.com/exdb/mnist/
+
+MNIST Database of Handwritten Digits. (1998).  
+**UCI Machine Learning Repository.**  
+https://doi.org/10.24432/C53K8Q
 
 ## Reproducibility Note
 
