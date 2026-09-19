@@ -20,7 +20,7 @@ The project explores that question using singular-value structure, cumulative en
 
 - **6,131** handwritten digit-3 images
 - **28 × 28 = 784** pixels per image
-- Gaussian noise with **σ = 0.2**
+- Gaussian noise with standard deviation **$\sigma = 0.2$**
 - Full SVD of the noisy data matrix
 - Rank-`k` reconstruction using truncated SVD
 - Three perspectives for choosing `k`:
@@ -37,10 +37,10 @@ For the saved notebook run, the noisy images have a baseline PSNR of **16.71 dB*
 | Metric | Result |
 |---|---:|
 | Noisy baseline PSNR | 16.71 dB |
-| Optimal `k` by PSNR | **135** |
+| Optimal $k$ by PSNR | **135** |
 | Maximum PSNR | **19.17 dB** |
 | Improvement over noisy input | **+2.46 dB** |
-| Energy captured at `k = 135` | **88.7%** |
+| Energy captured at $k = 135$ | **88.7%** |
 | Components retained | **135 / 784 = 17.2%** |
 
 The cumulative-energy thresholds in the same run are:
@@ -53,31 +53,51 @@ The cumulative-energy thresholds in the same run are:
 
 ![Optimal k result](assets/optimal_k.png)
 
+## Video Tutorial
+
+This project is accompanied by a two-part video tutorial that explains the intuition, mathematics, and implementation behind SVD-based image denoising.
+
+### Part 1
+**Seeing Through the Noise — SVD and Image Denoising**
+
+[Watch Part 1 on YouTube](https://youtu.be/eVJ38ftDeC4?si=AGKR_wnO5oCqDgzV)
+
+### Part 2
+**Seeing Through the Noise — Choosing k, Energy, and PSNR**
+
+[Watch Part 2 on YouTube](https://youtu.be/NKPLRfTOxUY?si=XP1FYfxfc91Zftt0)
+
 ## Why SVD Works Here
 
 Let the noisy data matrix be
 
-\[
+$$
 X \in \mathbb{R}^{N \times 784},
-\]
+$$
 
-where each row is one flattened 28 × 28 digit image. SVD decomposes the matrix as
+where each row represents one flattened **28 × 28 grayscale digit image**.
 
-\[
+Singular Value Decomposition (SVD) factorizes the matrix as
+
+$$
 X = U\Sigma V^T.
-\]
+$$
 
-A rank-`k` approximation keeps only the first `k` singular components:
+The singular values in $\Sigma$ indicate the relative importance of each component. The largest components capture the strongest shared structure across the handwritten digit-3 images.
 
-\[
-X_k = U_k\Sigma_kV_k^T.
-\]
+A rank-$k$ approximation keeps only the first $k$ singular components:
 
-The largest singular values capture the strongest shared patterns across the collection of handwritten 3s. Smaller components increasingly represent fine variation and noise. Choosing `k` is therefore a tradeoff:
+$$
+X_k = U_k \Sigma_k V_k^T.
+$$
 
-- **Too small:** important digit structure is lost and the reconstruction becomes blurry.
-- **Useful intermediate range:** dominant shared structure is retained while part of the noise is suppressed.
-- **Too large:** additional components begin to reconstruct more of the noise.
+This creates a denoising tradeoff:
+
+- **$k$ too small:** important digit structure is lost.
+- **Intermediate $k$:** dominant structure is preserved while some noise is removed.
+- **$k$ too large:** weaker components begin to reintroduce noise.
+
+The goal is to choose a value of $k$ that preserves the signal while suppressing unnecessary noise.
 
 ![Goldilocks principle](assets/goldilocks.png)
 
@@ -88,7 +108,7 @@ The notebook follows this workflow:
 1. Load MNIST and select all digit-3 images.
 2. Flatten each 28 × 28 image into a vector of 784 pixels.
 3. Normalize pixel intensities to `[0, 1]`.
-4. Add zero-mean Gaussian noise with `σ = 0.2`.
+4. Add zero-mean Gaussian noise with standard deviation $\sigma = 0.2$.
 5. Compute SVD on the full noisy digit-3 matrix.
 6. Reconstruct the matrix for different values of `k`.
 7. Measure reconstruction quality with Mean Squared Error (MSE) and PSNR.
